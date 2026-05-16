@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CivEnsina | Plataforma de Cursos para Construção Civil</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <div class="logo-icon">
+      <a class = "menu" href="#home">
+        <img src = "img/logo.png" alt="logo CivEnsina" width="130" height="60">
+      </a>
+      </div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Início</a></li>
+      <li><a href="#beneficios">Benefícios</a></li>
+      <li><a href="#cursos">Cursos</a></li>
+      <li><a href="#certificados">Certificados</a></li>
+      <li><a href="#premium">Premium</a></li>
+      <li><a href="#depoimentos">Depoimentos</a></li>
+    </ul>
+    <div class="nav-buttons">
+      <a href="auth.html" class="btn btn-outline">Entrar</a>
+      <a href="auth.html#cadastro" class="btn btn-primary">Cadastrar</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fas fa-certificate"></i> Plataforma certificada</div>
+    <h1 class="hero-title">Capacite-se para o mercado da<br/><span class="hero-highlight">Construção Civil</span></h1>
+    <p class="hero-subtitle">Aprenda do básico ao avançado com cursos online, certificados e conteúdo atualizado. Mais de 17 cursos disponíveis.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-number">1.000+</span><span class="stat-label">Alunos</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-number">17+</span><span class="stat-label">Cursos</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-number">100%</span><span class="stat-label">Online</span></div>
+    </div>
+    <div class="hero-buttons">
+      <a href="auth.html" class="btn btn-primary btn-lg pulse-btn"><i class="fas fa-rocket"></i> Começar agora</a>
+      <a href="#cursos" class="btn btn-glass btn-lg"><i class="fas fa-play-circle"></i> Ver cursos</a>
+    </div>
+  </div>
+  <div class="hero-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-dot"></div>
+  </div>
+</section>
+
+<!-- SOBRE A PLATAFORMA -->
+<section class="about-section" id="beneficios">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge"><i class="fas fa-star"></i> Por que escolher a CivEnsina?</span>
+      <h2 class="section-title">Benefícios da plataforma</h2>
+      <p class="section-subtitle">Tudo o que você precisa para se destacar no mercado da construção civil em um só lugar.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card animate-on-scroll">
+        <div class="benefit-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Cursos especializados</h3>
+        <p>Conteúdo criado por especialistas da área, atualizado constantemente com as últimas tendências do setor.</p>
+      </div>
+      <div class="benefit-card animate-on-scroll">
+        <div class="benefit-icon"><i class="fas fa-certificate"></i></div>
+        <h3>Certificação automática</h3>
+        <p>Ao concluir qualquer curso, seu certificado digital é gerado automaticamente com código de validação.</p>
+      </div>
+      <div class="benefit-card animate-on-scroll">
+        <div class="benefit-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3>Aprenda em qualquer lugar</h3>
+        <p>Plataforma 100% responsiva. Estude pelo celular, tablet ou computador, no seu ritmo e horário.</p>
+      </div>
+      <div class="benefit-card animate-on-scroll">
+        <div class="benefit-icon"><i class="fas fa-infinity"></i></div>
+        <h3>Cursos gratuitos</h3>
+        <p>Acesso imediato a cursos básicos sem custo algum. Cadastre-se e comece agora mesmo.</p>
+      </div>
+      <div class="benefit-card animate-on-scroll">
+        <div class="benefit-icon"><i class="fas fa-headset"></i></div>
+        <h3>Suporte prioritário</h3>
+        <p>Equipe de suporte dedicada para assinantes premium. Tire suas dúvidas com agilidade.</p>
+      </div>
+      <div class="benefit-card animate-on-scroll">
+        <div class="benefit-icon"><i class="fas fa-sync-alt"></i></div>
+        <h3>Conteúdo atualizado</h3>
+        <p>Novos cursos e materiais adicionados regularmente para manter você sempre à frente no mercado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURSOS BÁSICOS -->
+<section class="courses-section" id="cursos">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge"><i class="fas fa-book-open"></i> Gratuitos para Todos</span>
+      <h2 class="section-title">Cursos básicos</h2>
+      <p class="section-subtitle">Comece sua jornada sem gastar nada. Cursos gratuitos disponíveis após o cadastro.</p>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card animate-on-scroll">
+        <div class="course-thumb basic"><i class="fas fa-building"></i></div>
+        <div class="course-body">
+          <span class="course-tag free">Gratuito</span>
+          <h4>Introdução à Construção Civil</h4>
+          <p>Fundamentos essenciais para quem quer entrar no setor.</p>
+          <div class="course-meta"><span><i class="fas fa-clock"></i> 8h</span><span><i class="fas fa-video"></i> 12 aulas</span></div>
+          <div class="course-progress"><div class="progress-bar" style="width:0%"></div></div>
+          <a href="auth.html" class="btn btn-primary btn-sm">Iniciar Curso</a>
+        </div>
+      </div>
+      <div class="course-card animate-on-scroll">
+        <div class="course-thumb basic"><i class="fas fa-hard-hat"></i></div>
+        <div class="course-body">
+          <span class="course-tag free">Gratuito</span>
+          <h4>Como Utilizar EPIs</h4>
+          <p>Equipamentos de Proteção Individual: uso correto e normas.</p>
+          <div class="course-meta"><span><i class="fas fa-clock"></i> 6h</span><span><i class="fas fa-video"></i> 8 aulas</span></div>
+          <div class="course-progress"><div class="progress-bar" style="width:0%"></div></div>
+          <a href="auth.html" class="btn btn-primary btn-sm">Iniciar Curso</a>
+        </div>
+      </div>
+      <div class="course-card animate-on-scroll">
+        <div class="course-thumb basic"><i class="fas fa-clipboard-list"></i></div>
+        <div class="course-body">
+          <span class="course-tag free">Gratuito</span>
+          <h4>Normas Técnicas e NRs</h4>
+          <p>Regulamentações e normas obrigatórias para o setor.</p>
+          <div class="course-meta"><span><i class="fas fa-clock"></i> 10h</span><span><i class="fas fa-video"></i> 15 aulas</span></div>
+          <div class="course-progress"><div class="progress-bar" style="width:0%"></div></div>
+          <a href="auth.html" class="btn btn-primary btn-sm">Iniciar Curso</a>
+        </div>
+      </div>
+      <div class="course-card animate-on-scroll">
+        <div class="course-thumb basic"><i class="fas fa-shield-alt"></i></div>
+        <div class="course-body">
+          <span class="course-tag free">Gratuito</span>
+          <h4>Segurança no Trabalho</h4>
+          <p>Prevenção de acidentes e cultura de segurança na obra.</p>
+          <div class="course-meta"><span><i class="fas fa-clock"></i> 8h</span><span><i class="fas fa-video"></i> 10 aulas</span></div>
+          <div class="course-progress"><div class="progress-bar" style="width:0%"></div></div>
+          <a href="auth.html" class="btn btn-primary btn-sm">Iniciar Curso</a>
+        </div>
+      </div>
+      <div class="course-card animate-on-scroll">
+        <div class="course-thumb basic"><i class="fas fa-drafting-compass"></i></div>
+        <div class="course-body">
+          <span class="course-tag free">Gratuito</span>
+          <h4>Leitura de Projetos</h4>
+          <p>Interprete plantas e projetos arquitetônicos com facilidade.</p>
+          <div class="course-meta"><span><i class="fas fa-clock"></i> 12h</span><span><i class="fas fa-video"></i> 18 aulas</span></div>
+          <div class="course-progress"><div class="progress-bar" style="width:0%"></div></div>
+          <a href="auth.html" class="btn btn-primary btn-sm">Iniciar Curso</a>
+        </div>
+      </div>
+      <div class="course-card animate-on-scroll">
+        <div class="course-thumb basic"><i class="fas fa-leaf"></i></div>
+        <div class="course-body">
+          <span class="course-tag free">Gratuito</span>
+          <h4>Sustentabilidade na Construção</h4>
+          <p>Práticas sustentáveis e ecologicamente corretas na obra.</p>
+          <div class="course-meta"><span><i class="fas fa-clock"></i> 6h</span><span><i class="fas fa-video"></i> 9 aulas</span></div>
+          <div class="course-progress"><div class="progress-bar" style="width:0%"></div></div>
+          <a href="auth.html" class="btn btn-primary btn-sm">Iniciar Curso</a>
+        </div>
+      </div>
+    </div>
+    <div class="courses-cta">
+      <a href="auth.html" class="btn btn-primary btn-lg">Ver Todos os Cursos <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- PREMIUM -->
+<section class="premium-section" id="premium">
+  <div class="container">
+    <div class="premium-inner">
+      <div class="premium-content animate-on-scroll">
+        <span class="section-badge light"><i class="fas fa-crown"></i> Plano Premium</span>
+        <h2>Acesse os Cursos Avançados por apenas</h2>
+        <div class="price-tag"><span class="price-currency">R$</span><span class="price-value">79</span><span class="price-cents">,99</span><span class="price-period">/mês</span></div>
+        <ul class="premium-benefits">
+          <li><i class="fas fa-check"></i> Acesso ilimitado a todos os cursos avançados</li>
+          <li><i class="fas fa-check"></i> Conteúdo exclusivo e atualizado mensalmente</li>
+          <li><i class="fas fa-check"></i> Download de materiais complementares em PDF</li>
+          <li><i class="fas fa-check"></i> Certificados premium com validação</li>
+          <li><i class="fas fa-check"></i> Suporte prioritário via chat</li>
+          <li><i class="fas fa-check"></i> Cancele a qualquer momento</li>
+        </ul>
+        <div class="premium-payment-icons">
+          <span><i class="fab fa-cc-visa"></i></span>
+          <span><i class="fab fa-cc-mastercard"></i></span>
+          <span><i class="fas fa-barcode"></i></span>
+          <span><i class="fab fa-pix"></i></span>
+        </div>
+        <a href="auth.html" class="btn btn-gold btn-lg"><i class="fas fa-crown"></i> Assinar Premium</a>
+      </div>
+      <div class="premium-courses animate-on-scroll">
+        <h3>Cursos Avançados Inclusos:</h3>
+        <div class="advanced-list">
+          <div class="adv-item"><i class="fas fa-tasks"></i><span>Gestão de Obras</span><span class="tag-premium">Premium</span></div>
+          <div class="adv-item"><i class="fas fa-calculator"></i><span>Orçamento e Planejamento</span><span class="tag-premium">Premium</span></div>
+          <div class="adv-item"><i class="fas fa-laptop-code"></i><span>AutoCAD para Construção Civil</span><span class="tag-premium">Premium</span></div>
+          <div class="adv-item"><i class="fas fa-cube"></i><span>Revit e BIM</span><span class="tag-premium">Premium</span></div>
+          <div class="adv-item"><i class="fas fa-bolt"></i><span>Instalações Elétricas Prediais</span><span class="tag-premium">Premium</span></div>
+          <div class="adv-item"><i class="fas fa-tint"></i><span>Instalações Hidráulicas</span><span class="tag-premium">Premium</span></div>
+          <div class="adv-item"><i class="fas fa-industry"></i><span>Estruturas de Concreto Armado</span><span class="tag-premium">Premium</span></div>
+          <div class="adv-item"><i class="fas fa-search"></i><span>Patologia das Construções</span><span class="tag-premium">Premium</span></div>
+          <div class="adv-item"><i class="fas fa-recycle"></i><span>Lean Construction</span><span class="tag-premium">Premium</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICADOS -->
+<section class="cert-section" id="certificados">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge"><i class="fas fa-award"></i> Valorize sua carreira</span>
+      <h2 class="section-title">Certificados Reconhecidos</h2>
+      <p class="section-subtitle">Todo curso gera automaticamente um certificado digital com código de validação.</p>
+    </div>
+    <div class="cert-preview animate-on-scroll">
+      <div class="cert-card">
+        <div class="cert-header">
+          <div class="cert-logo"><i class="fas fa-hard-hat"></i> CivEnsina</div>
+          <div class="cert-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        </div>
+        <p class="cert-label">CERTIFICADO DE CONCLUSÃO</p>
+        <h3 class="cert-course-name">Gestão de Obras</h3>
+        <p class="cert-student">Concedido a <strong>Rhyanne Nascimento</strong></p>
+        <div class="cert-info">
+          <span><i class="fas fa-clock"></i> 40 horas</span>
+          <span><i class="fas fa-calendar"></i> 15/05/2026</span>
+          <span><i class="fas fa-barcode"></i> #CE-2026-00123</span>
+        </div>
+        <div class="cert-seal"><i class="fas fa-certificate"></i></div>
+      </div>
+      <div class="cert-features">
+        <div class="cert-feat"><i class="fas fa-file-pdf"></i><div><h4>PDF Digital</h4><p>Download imediato em alta resolução</p></div></div>
+        <div class="cert-feat"><i class="fas fa-qrcode"></i><div><h4>Código de Validação</h4><p>Verificável online por empregadores</p></div></div>
+        <div class="cert-feat"><i class="fas fa-signature"></i><div><h4>Assinatura Digital</h4><p>Autenticidade garantida pela plataforma</p></div></div>
+        <div class="cert-feat"><i class="fas fa-share-alt"></i><div><h4>Compartilhável</h4><p>Adicione ao LinkedIn e currículo</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="testimonials-section" id="depoimentos">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge"><i class="fas fa-comments"></i> Histórias Reais</span>
+      <h2 class="section-title">O que nossos alunos dizem</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card animate-on-scroll">
+        <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"A CivEnsina transformou minha carreira. Consegui uma promoção após concluir o curso de Gestão de Obras. O conteúdo é muito prático e direto ao ponto!"</p>
+        <div class="test-author">
+          <div class="test-avatar"><i class="fas fa-user"></i></div>
+          <div><strong>Carlos Eduardo</strong><span>Mestre de Obras, Vila Velha, Espírito Santo</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card animate-on-scroll">
+        <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"Comecei pelos cursos gratuitos e em um mês já estava aprendendo AutoCAD. A plataforma é intuitiva e os professores são excelentes. Recomendo muito!"</p>
+        <div class="test-author">
+          <div class="test-avatar"><i class="fas fa-user"></i></div>
+          <div><strong>Ana Beatriz</strong><span>Engenheira Civil, Cariacica, Espírito Santo</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card animate-on-scroll">
+        <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"Por apenas R$79,99 tenho acesso a cursos que valeriam centenas de reais em outras plataformas. O certificado é reconhecido e já me abriu muitas portas!"</p>
+        <div class="test-author">
+          <div class="test-avatar"><i class="fas fa-user"></i></div>
+          <div><strong>Roberto Silva</strong><span>Técnico em Edificações, Guarapari, Espírito Santo</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box animate-on-scroll">
+      <i class="fas fa-hard-hat cta-icon"></i>
+      <h2>Pronto para começar?</h2>
+      <p>Junte-se a mais de 5.000 profissionais que já estão se capacitando com a CivEnsina.</p>
+      <div class="cta-buttons">
+        <a href="auth.html" class="btn btn-gold btn-lg">Criar conta gratuita <i class="fas fa-arrow-right"></i></a>
+        <a href="auth.html" class="btn btn-outline-light btn-lg">Já tenho conta</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">
+            <div class="logo-icon"> <a class = "menu" href="#home">
+              <img src = "img/logo.png" alt="logo CivEnsina" width="150" height="90">
+            </a>
+            </div>
+        </div>
+        <p>Capacitando profissionais da construção civil com cursos online de qualidade.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Plataforma</h4>
+        <ul>
+          <li><a href="#">Cursos Básicos</a></li>
+          <li><a href="#">Cursos Avançados</a></li>
+          <li><a href="#">Certificados</a></li>
+          <li><a href="#">Plano Premium</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#">Sobre Nós</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Parceiros</a></li>
+          <li><a href="#">Trabalhe Conosco</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Suporte</h4>
+        <ul>
+          <li><a href="#">Central de Ajuda</a></li>
+          <li><a href="#">Contato</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">Privacidade</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contato</h4>
+        <p><i class="fas fa-envelope"></i> contato@civensina.com.br</p>
+        <p><i class="fas fa-phone"></i> 4002-8922</p>
+        <p><i class="fas fa-map-marker-alt"></i> Vila Velha, ES – Brasil</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 CivEnsina. Todos os direitos reservados.</p>
+      <p>CNPJ: 00.000.000/0001-00</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
