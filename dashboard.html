@@ -1,385 +1,448 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CivEnsina | Plataforma de Cursos para Construção Civil</title>
+  <title>CivEnsina | Painel</title>
   <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/dashboard.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
 </head>
-<body>
+<body class="dashboard-page">
 
-<!-- NAVBAR -->
-<nav class="navbar" id="navbar">
-  <div class="nav-container">
-    <div class="nav-logo">
-      <div class="logo-icon">
-      <a class = "menu" href="#home">
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">
+      <div class = "menu-dashboard"><a class = "menu">
         <img src = "img/logo.png" alt="logo CivEnsina" width="130" height="60">
-      </a>
+        </a>
       </div>
     </div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home">Início</a></li>
-      <li><a href="#beneficios">Benefícios</a></li>
-      <li><a href="#cursos">Cursos</a></li>
-      <li><a href="#certificados">Certificados</a></li>
-      <li><a href="#premium">Premium</a></li>
-      <li><a href="#depoimentos">Depoimentos</a></li>
-    </ul>
-    <div class="nav-buttons">
-      <a href="auth.html" class="btn btn-outline">Entrar</a>
-      <a href="auth.html#cadastro" class="btn btn-primary">Cadastrar</a>
-    </div>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
   </div>
-</nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-badge"><i class="fas fa-certificate"></i> Plataforma certificada</div>
-    <h1 class="hero-title">Capacite-se para o mercado da<br/><span class="hero-highlight">Construção Civil</span></h1>
-    <p class="hero-subtitle">Aprenda do básico ao avançado com cursos online, certificados e conteúdo atualizado. Mais de 17 cursos disponíveis.</p>
-    <div class="hero-stats">
-      <div class="stat"><span class="stat-number">1.000+</span><span class="stat-label">Alunos</span></div>
-      <div class="stat-divider"></div>
-      <div class="stat"><span class="stat-number">17+</span><span class="stat-label">Cursos</span></div>
-      <div class="stat-divider"></div>
-      <div class="stat"><span class="stat-number">100%</span><span class="stat-label">Online</span></div>
-    </div>
-    <div class="hero-buttons">
-      <a href="auth.html" class="btn btn-primary btn-lg pulse-btn"><i class="fas fa-rocket"></i> Começar agora</a>
-      <a href="#cursos" class="btn btn-glass btn-lg"><i class="fas fa-play-circle"></i> Ver cursos</a>
+  <div class="sidebar-user">
+    <div class="sidebar-avatar"><i class="fas fa-user"></i></div>
+    <div class="sidebar-user-info">
+      <p class="sidebar-user-name" id="sidebarName">Carregando...</p>
+      <span class="sidebar-badge free" id="sidebarPlan">Gratuito</span>
     </div>
   </div>
-  <div class="hero-shapes">
-    <div class="shape shape-1"></div>
-    <div class="shape shape-2"></div>
-    <div class="shape shape-3"></div>
-  </div>
-  <div class="scroll-indicator">
-    <div class="scroll-dot"></div>
-  </div>
-</section>
 
-<!-- SOBRE A PLATAFORMA -->
-<section class="about-section" id="beneficios">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-badge"><i class="fas fa-star"></i> Por que escolher a CivEnsina?</span>
-      <h2 class="section-title">Benefícios da plataforma</h2>
-      <p class="section-subtitle">Tudo o que você precisa para se destacar no mercado da construção civil em um só lugar.</p>
-    </div>
-    <div class="benefits-grid">
-      <div class="benefit-card animate-on-scroll">
-        <div class="benefit-icon"><i class="fas fa-graduation-cap"></i></div>
-        <h3>Cursos especializados</h3>
-        <p>Conteúdo criado por especialistas da área, atualizado constantemente com as últimas tendências do setor.</p>
-      </div>
-      <div class="benefit-card animate-on-scroll">
-        <div class="benefit-icon"><i class="fas fa-certificate"></i></div>
-        <h3>Certificação automática</h3>
-        <p>Ao concluir qualquer curso, seu certificado digital é gerado automaticamente com código de validação.</p>
-      </div>
-      <div class="benefit-card animate-on-scroll">
-        <div class="benefit-icon"><i class="fas fa-mobile-alt"></i></div>
-        <h3>Aprenda em qualquer lugar</h3>
-        <p>Plataforma 100% responsiva. Estude pelo celular, tablet ou computador, no seu ritmo e horário.</p>
-      </div>
-      <div class="benefit-card animate-on-scroll">
-        <div class="benefit-icon"><i class="fas fa-infinity"></i></div>
-        <h3>Cursos gratuitos</h3>
-        <p>Acesso imediato a cursos básicos sem custo algum. Cadastre-se e comece agora mesmo.</p>
-      </div>
-      <div class="benefit-card animate-on-scroll">
-        <div class="benefit-icon"><i class="fas fa-headset"></i></div>
-        <h3>Suporte prioritário</h3>
-        <p>Equipe de suporte dedicada para assinantes premium. Tire suas dúvidas com agilidade.</p>
-      </div>
-      <div class="benefit-card animate-on-scroll">
-        <div class="benefit-icon"><i class="fas fa-sync-alt"></i></div>
-        <h3>Conteúdo atualizado</h3>
-        <p>Novos cursos e materiais adicionados regularmente para manter você sempre à frente no mercado.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  <nav class="sidebar-nav">
+    <a href="#" class="nav-item active" onclick="showSection('home', this)"><i class="fas fa-home"></i><span>Início</span></a>
+    <a href="#" class="nav-item" onclick="showSection('basic-courses', this)"><i class="fas fa-book-open"></i><span>Cursos Básicos</span><span class="nav-badge free-badge">Grátis</span></a>
+    <a href="#" class="nav-item" onclick="showSection('advanced-courses', this)"><i class="fas fa-crown"></i><span>Cursos Avançados</span><span class="nav-badge prem-badge">Premium</span></a>
+    <a href="#" class="nav-item" onclick="showSection('certificates', this)"><i class="fas fa-certificate"></i><span>Certificados</span></a>
+    <a href="#" class="nav-item" onclick="showSection('profile', this)"><i class="fas fa-user-cog"></i><span>Perfil</span></a>
+    <a href="#" class="nav-item" onclick="showSection('subscription', this)"><i class="fas fa-star"></i><span>Assinatura Premium</span></a>
+    <a href="#" class="nav-item" onclick="showSection('support', this)"><i class="fas fa-headset"></i><span>Suporte</span></a>
+  </nav>
 
-<!-- CURSOS BÁSICOS -->
-<section class="courses-section" id="cursos">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-badge"><i class="fas fa-book-open"></i> Gratuitos para Todos</span>
-      <h2 class="section-title">Cursos básicos</h2>
-      <p class="section-subtitle">Comece sua jornada sem gastar nada. Cursos gratuitos disponíveis após o cadastro.</p>
-    </div>
-    <div class="courses-grid">
-      <div class="course-card animate-on-scroll">
-        <div class="course-thumb basic"><i class="fas fa-building"></i></div>
-        <div class="course-body">
-          <span class="course-tag free">Gratuito</span>
-          <h4>Introdução à Construção Civil</h4>
-          <p>Fundamentos essenciais para quem quer entrar no setor.</p>
-          <div class="course-meta"><span><i class="fas fa-clock"></i> 8h</span><span><i class="fas fa-video"></i> 12 aulas</span></div>
-          <div class="course-progress"><div class="progress-bar" style="width:0%"></div></div>
-          <a href="auth.html" class="btn btn-primary btn-sm">Iniciar Curso</a>
-        </div>
-      </div>
-      <div class="course-card animate-on-scroll">
-        <div class="course-thumb basic"><i class="fas fa-hard-hat"></i></div>
-        <div class="course-body">
-          <span class="course-tag free">Gratuito</span>
-          <h4>Como Utilizar EPIs</h4>
-          <p>Equipamentos de Proteção Individual: uso correto e normas.</p>
-          <div class="course-meta"><span><i class="fas fa-clock"></i> 6h</span><span><i class="fas fa-video"></i> 8 aulas</span></div>
-          <div class="course-progress"><div class="progress-bar" style="width:0%"></div></div>
-          <a href="auth.html" class="btn btn-primary btn-sm">Iniciar Curso</a>
-        </div>
-      </div>
-      <div class="course-card animate-on-scroll">
-        <div class="course-thumb basic"><i class="fas fa-clipboard-list"></i></div>
-        <div class="course-body">
-          <span class="course-tag free">Gratuito</span>
-          <h4>Normas Técnicas e NRs</h4>
-          <p>Regulamentações e normas obrigatórias para o setor.</p>
-          <div class="course-meta"><span><i class="fas fa-clock"></i> 10h</span><span><i class="fas fa-video"></i> 15 aulas</span></div>
-          <div class="course-progress"><div class="progress-bar" style="width:0%"></div></div>
-          <a href="auth.html" class="btn btn-primary btn-sm">Iniciar Curso</a>
-        </div>
-      </div>
-      <div class="course-card animate-on-scroll">
-        <div class="course-thumb basic"><i class="fas fa-shield-alt"></i></div>
-        <div class="course-body">
-          <span class="course-tag free">Gratuito</span>
-          <h4>Segurança no Trabalho</h4>
-          <p>Prevenção de acidentes e cultura de segurança na obra.</p>
-          <div class="course-meta"><span><i class="fas fa-clock"></i> 8h</span><span><i class="fas fa-video"></i> 10 aulas</span></div>
-          <div class="course-progress"><div class="progress-bar" style="width:0%"></div></div>
-          <a href="auth.html" class="btn btn-primary btn-sm">Iniciar Curso</a>
-        </div>
-      </div>
-      <div class="course-card animate-on-scroll">
-        <div class="course-thumb basic"><i class="fas fa-drafting-compass"></i></div>
-        <div class="course-body">
-          <span class="course-tag free">Gratuito</span>
-          <h4>Leitura de Projetos</h4>
-          <p>Interprete plantas e projetos arquitetônicos com facilidade.</p>
-          <div class="course-meta"><span><i class="fas fa-clock"></i> 12h</span><span><i class="fas fa-video"></i> 18 aulas</span></div>
-          <div class="course-progress"><div class="progress-bar" style="width:0%"></div></div>
-          <a href="auth.html" class="btn btn-primary btn-sm">Iniciar Curso</a>
-        </div>
-      </div>
-      <div class="course-card animate-on-scroll">
-        <div class="course-thumb basic"><i class="fas fa-leaf"></i></div>
-        <div class="course-body">
-          <span class="course-tag free">Gratuito</span>
-          <h4>Sustentabilidade na Construção</h4>
-          <p>Práticas sustentáveis e ecologicamente corretas na obra.</p>
-          <div class="course-meta"><span><i class="fas fa-clock"></i> 6h</span><span><i class="fas fa-video"></i> 9 aulas</span></div>
-          <div class="course-progress"><div class="progress-bar" style="width:0%"></div></div>
-          <a href="auth.html" class="btn btn-primary btn-sm">Iniciar Curso</a>
-        </div>
-      </div>
-    </div>
-    <div class="courses-cta">
-      <a href="auth.html" class="btn btn-primary btn-lg">Ver Todos os Cursos <i class="fas fa-arrow-right"></i></a>
-    </div>
+  <div class="sidebar-footer">
+    <a href="index.html" class="nav-item logout"><i class="fas fa-sign-out-alt"></i><span>Sair</span></a>
   </div>
-</section>
+</aside>
 
-<!-- PREMIUM -->
-<section class="premium-section" id="premium">
-  <div class="container">
-    <div class="premium-inner">
-      <div class="premium-content animate-on-scroll">
-        <span class="section-badge light"><i class="fas fa-crown"></i> Plano Premium</span>
-        <h2>Acesse os Cursos Avançados por apenas</h2>
-        <div class="price-tag"><span class="price-currency">R$</span><span class="price-value">79</span><span class="price-cents">,99</span><span class="price-period">/mês</span></div>
-        <ul class="premium-benefits">
-          <li><i class="fas fa-check"></i> Acesso ilimitado a todos os cursos avançados</li>
-          <li><i class="fas fa-check"></i> Conteúdo exclusivo e atualizado mensalmente</li>
-          <li><i class="fas fa-check"></i> Download de materiais complementares em PDF</li>
-          <li><i class="fas fa-check"></i> Certificados premium com validação</li>
-          <li><i class="fas fa-check"></i> Suporte prioritário via chat</li>
-          <li><i class="fas fa-check"></i> Cancele a qualquer momento</li>
-        </ul>
-        <div class="premium-payment-icons">
-          <span><i class="fab fa-cc-visa"></i></span>
-          <span><i class="fab fa-cc-mastercard"></i></span>
-          <span><i class="fas fa-barcode"></i></span>
-          <span><i class="fab fa-pix"></i></span>
-        </div>
-        <a href="auth.html" class="btn btn-gold btn-lg"><i class="fas fa-crown"></i> Assinar Premium</a>
-      </div>
-      <div class="premium-courses animate-on-scroll">
-        <h3>Cursos Avançados Inclusos:</h3>
-        <div class="advanced-list">
-          <div class="adv-item"><i class="fas fa-tasks"></i><span>Gestão de Obras</span><span class="tag-premium">Premium</span></div>
-          <div class="adv-item"><i class="fas fa-calculator"></i><span>Orçamento e Planejamento</span><span class="tag-premium">Premium</span></div>
-          <div class="adv-item"><i class="fas fa-laptop-code"></i><span>AutoCAD para Construção Civil</span><span class="tag-premium">Premium</span></div>
-          <div class="adv-item"><i class="fas fa-cube"></i><span>Revit e BIM</span><span class="tag-premium">Premium</span></div>
-          <div class="adv-item"><i class="fas fa-bolt"></i><span>Instalações Elétricas Prediais</span><span class="tag-premium">Premium</span></div>
-          <div class="adv-item"><i class="fas fa-tint"></i><span>Instalações Hidráulicas</span><span class="tag-premium">Premium</span></div>
-          <div class="adv-item"><i class="fas fa-industry"></i><span>Estruturas de Concreto Armado</span><span class="tag-premium">Premium</span></div>
-          <div class="adv-item"><i class="fas fa-search"></i><span>Patologia das Construções</span><span class="tag-premium">Premium</span></div>
-          <div class="adv-item"><i class="fas fa-recycle"></i><span>Lean Construction</span><span class="tag-premium">Premium</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- MAIN -->
+<div class="dashboard-main" id="dashMain">
 
-<!-- CERTIFICADOS -->
-<section class="cert-section" id="certificados">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-badge"><i class="fas fa-award"></i> Valorize sua carreira</span>
-      <h2 class="section-title">Certificados Reconhecidos</h2>
-      <p class="section-subtitle">Todo curso gera automaticamente um certificado digital com código de validação.</p>
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <div class="topbar-search">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Buscar cursos..."/>
     </div>
-    <div class="cert-preview animate-on-scroll">
-      <div class="cert-card">
-        <div class="cert-header">
-          <div class="cert-logo"><i class="fas fa-hard-hat"></i> CivEnsina</div>
-          <div class="cert-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        </div>
-        <p class="cert-label">CERTIFICADO DE CONCLUSÃO</p>
-        <h3 class="cert-course-name">Gestão de Obras</h3>
-        <p class="cert-student">Concedido a <strong>Rhyanne Nascimento</strong></p>
-        <div class="cert-info">
-          <span><i class="fas fa-clock"></i> 40 horas</span>
-          <span><i class="fas fa-calendar"></i> 15/05/2026</span>
-          <span><i class="fas fa-barcode"></i> #CE-2026-00123</span>
-        </div>
-        <div class="cert-seal"><i class="fas fa-certificate"></i></div>
-      </div>
-      <div class="cert-features">
-        <div class="cert-feat"><i class="fas fa-file-pdf"></i><div><h4>PDF Digital</h4><p>Download imediato em alta resolução</p></div></div>
-        <div class="cert-feat"><i class="fas fa-qrcode"></i><div><h4>Código de Validação</h4><p>Verificável online por empregadores</p></div></div>
-        <div class="cert-feat"><i class="fas fa-signature"></i><div><h4>Assinatura Digital</h4><p>Autenticidade garantida pela plataforma</p></div></div>
-        <div class="cert-feat"><i class="fas fa-share-alt"></i><div><h4>Compartilhável</h4><p>Adicione ao LinkedIn e currículo</p></div></div>
+    <div class="topbar-right">
+      <button class="topbar-icon" title="Notificações"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+      <div class="topbar-user">
+        <div class="topbar-avatar"><i class="fas fa-user"></i></div>
+        <span id="topbarName">Usuário</span>
+        <i class="fas fa-chevron-down"></i>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- DEPOIMENTOS -->
-<section class="testimonials-section" id="depoimentos">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-badge"><i class="fas fa-comments"></i> Histórias Reais</span>
-      <h2 class="section-title">O que nossos alunos dizem</h2>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card animate-on-scroll">
-        <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p>"A CivEnsina transformou minha carreira. Consegui uma promoção após concluir o curso de Gestão de Obras. O conteúdo é muito prático e direto ao ponto!"</p>
-        <div class="test-author">
-          <div class="test-avatar"><i class="fas fa-user"></i></div>
-          <div><strong>Carlos Eduardo</strong><span>Mestre de Obras, Vila Velha, Espírito Santo</span></div>
-        </div>
-      </div>
-      <div class="testimonial-card animate-on-scroll">
-        <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p>"Comecei pelos cursos gratuitos e em um mês já estava aprendendo AutoCAD. A plataforma é intuitiva e os professores são excelentes. Recomendo muito!"</p>
-        <div class="test-author">
-          <div class="test-avatar"><i class="fas fa-user"></i></div>
-          <div><strong>Ana Beatriz</strong><span>Engenheira Civil, Cariacica, Espírito Santo</span></div>
-        </div>
-      </div>
-      <div class="testimonial-card animate-on-scroll">
-        <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p>"Por apenas R$79,99 tenho acesso a cursos que valeriam centenas de reais em outras plataformas. O certificado é reconhecido e já me abriu muitas portas!"</p>
-        <div class="test-author">
-          <div class="test-avatar"><i class="fas fa-user"></i></div>
-          <div><strong>Roberto Silva</strong><span>Técnico em Edificações, Guarapari, Espírito Santo</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- CONTENT -->
+  <main class="dash-content">
 
-<!-- CTA FINAL -->
-<section class="cta-section">
-  <div class="container">
-    <div class="cta-box animate-on-scroll">
-      <i class="fas fa-hard-hat cta-icon"></i>
-      <h2>Pronto para começar?</h2>
-      <p>Junte-se a mais de 5.000 profissionais que já estão se capacitando com a CivEnsina.</p>
-      <div class="cta-buttons">
-        <a href="auth.html" class="btn btn-gold btn-lg">Criar conta gratuita <i class="fas fa-arrow-right"></i></a>
-        <a href="auth.html" class="btn btn-outline-light btn-lg">Já tenho conta</a>
+    <!-- HOME SECTION -->
+    <section class="dash-section active" id="section-home">
+      <div class="dash-welcome">
+        <div class="welcome-text">
+          <h1>Olá, <span id="welcomeName">Aluno</span>!</h1>
+          <p>Continue sua jornada de aprendizado. Você está indo muito bem!</p>
+        </div>
+        <div class="welcome-plan">
+          <span class="plan-badge free" id="planBadge"><i class="fas fa-user"></i> Plano Gratuito</span>
+          <a href="#" onclick="showSection('subscription', null)" class="btn btn-gold btn-sm"><i class="fas fa-crown"></i> Fazer Upgrade</a>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="nav-logo">
-            <div class="logo-icon"> <a class = "menu" href="#home">
-              <img src = "img/logo.png" alt="logo CivEnsina" width="150" height="90">
-            </a>
+      <div class="dash-cards">
+        <div class="dash-card stat-card">
+          <div class="dc-icon orange"><i class="fas fa-play-circle"></i></div>
+          <div class="dc-info"><span class="dc-number" id="inProgressCount">0</span><span class="dc-label">Em Andamento</span></div>
+        </div>
+        <div class="dash-card stat-card">
+          <div class="dc-icon green"><i class="fas fa-check-circle"></i></div>
+          <div class="dc-info"><span class="dc-number" id="completedCount">0</span><span class="dc-label">Concluídos</span></div>
+        </div>
+        <div class="dash-card stat-card">
+          <div class="dc-icon yellow"><i class="fas fa-certificate"></i></div>
+          <div class="dc-info"><span class="dc-number" id="certsCount">0</span><span class="dc-label">Certificados</span></div>
+        </div>
+        <div class="dash-card stat-card">
+          <div class="dc-icon blue"><i class="fas fa-clock"></i></div>
+          <div class="dc-info"><span class="dc-number" id="hoursCount">0h</span><span class="dc-label">Estudadas</span></div>
+        </div>
+      </div>
+
+      <div class="dash-grid-2">
+        <!-- CURSOS EM ANDAMENTO -->
+        <div class="dash-card">
+          <div class="card-header-dash">
+            <h3><i class="fas fa-play-circle"></i> Meus Cursos</h3>
+            <a href="#" onclick="showSection('basic-courses',null)" class="link-sm">Ver todos</a>
+          </div>
+          <div id="myCoursesContainer">
+            <div class="empty-state">
+              <i class="fas fa-book-open"></i>
+              <p>Você ainda não começou nenhum curso.</p>
+              <a href="#" onclick="showSection('basic-courses',null)" class="btn btn-primary btn-sm">Explorar Cursos</a>
             </div>
+          </div>
         </div>
-        <p>Capacitando profissionais da construção civil com cursos online de qualidade.</p>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-linkedin"></i></a>
-          <a href="#"><i class="fab fa-whatsapp"></i></a>
+
+        <!-- CERTIFICADOS -->
+        <div class="dash-card">
+          <div class="card-header-dash">
+            <h3><i class="fas fa-award"></i> Certificados Recentes</h3>
+            <a href="#" onclick="showSection('certificates',null)" class="link-sm">Ver todos</a>
+          </div>
+          <div id="myCertsContainer">
+            <div class="empty-state">
+              <i class="fas fa-certificate"></i>
+              <p>Conclua um curso para ganhar seu primeiro certificado!</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="footer-links">
-        <h4>Plataforma</h4>
-        <ul>
-          <li><a href="#">Cursos Básicos</a></li>
-          <li><a href="#">Cursos Avançados</a></li>
-          <li><a href="#">Certificados</a></li>
-          <li><a href="#">Plano Premium</a></li>
-        </ul>
+
+      <!-- SUGESTÕES DE CURSOS -->
+      <div class="dash-card mt-20">
+        <div class="card-header-dash">
+          <h3><i class="fas fa-star"></i> Cursos Recomendados</h3>
+        </div>
+        <div class="suggest-grid">
+          <div class="suggest-card" onclick="showSection('basic-courses',null)">
+            <div class="sug-icon"><i class="fas fa-building"></i></div>
+            <div class="sug-info"><h4>Intro à Construção Civil</h4><span class="course-tag free">Gratuito</span></div>
+          </div>
+          <div class="suggest-card" onclick="showSection('basic-courses',null)">
+            <div class="sug-icon"><i class="fas fa-hard-hat"></i></div>
+            <div class="sug-info"><h4>Como Utilizar EPIs</h4><span class="course-tag free">Gratuito</span></div>
+          </div>
+          <div class="suggest-card" onclick="showSection('advanced-courses',null)">
+            <div class="sug-icon"><i class="fas fa-laptop-code"></i></div>
+            <div class="sug-info"><h4>AutoCAD para Construção</h4><span class="course-tag premium">Premium</span></div>
+          </div>
+        </div>
       </div>
-      <div class="footer-links">
-        <h4>Empresa</h4>
-        <ul>
-          <li><a href="#">Sobre Nós</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Parceiros</a></li>
-          <li><a href="#">Trabalhe Conosco</a></li>
-        </ul>
+    </section>
+
+    <!-- BASIC COURSES -->
+    <section class="dash-section" id="section-basic-courses">
+      <div class="section-page-header">
+        <h2><i class="fas fa-book-open"></i> Cursos Básicos</h2>
+        <p>Todos gratuitos para usuários cadastrados. Aprenda no seu ritmo!</p>
       </div>
-      <div class="footer-links">
-        <h4>Suporte</h4>
-        <ul>
-          <li><a href="#">Central de Ajuda</a></li>
-          <li><a href="#">Contato</a></li>
-          <li><a href="#">Termos de Uso</a></li>
-          <li><a href="#">Privacidade</a></li>
-        </ul>
+      <div class="courses-dash-grid" id="basicCoursesGrid"></div>
+    </section>
+
+    <!-- ADVANCED COURSES -->
+    <section class="dash-section" id="section-advanced-courses">
+      <div class="section-page-header">
+        <h2><i class="fas fa-crown"></i> Cursos Avançados</h2>
+        <p>Conteúdo exclusivo para assinantes Premium.</p>
       </div>
-      <div class="footer-contact">
-        <h4>Contato</h4>
-        <p><i class="fas fa-envelope"></i> contato@civensina.com.br</p>
-        <p><i class="fas fa-phone"></i> 4002-8922</p>
-        <p><i class="fas fa-map-marker-alt"></i> Vila Velha, ES – Brasil</p>
+      <div id="premiumGate" class="premium-gate" style="display:none;">
+        <div class="pgate-card">
+          <i class="fas fa-crown"></i>
+          <h3>Área Premium</h3>
+          <p>Assine o plano Premium por <strong>R$79,99/mês</strong> e acesse todos os cursos avançados.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Acesso ilimitado</li>
+            <li><i class="fas fa-check"></i> Certificados Premium</li>
+            <li><i class="fas fa-check"></i> Suporte prioritário</li>
+            <li><i class="fas fa-check"></i> Cancele quando quiser</li>
+          </ul>
+          <a href="#" onclick="showSection('subscription',null)" class="btn btn-gold btn-lg"><i class="fas fa-crown"></i> Assinar Agora</a>
+        </div>
+      </div>
+      <div class="courses-dash-grid" id="advancedCoursesGrid"></div>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section class="dash-section" id="section-certificates">
+      <div class="section-page-header">
+        <h2><i class="fas fa-certificate"></i> Meus Certificados</h2>
+        <p>Seus certificados digitais prontos para download e compartilhamento.</p>
+      </div>
+      <div id="certsGrid">
+        <div class="empty-state large">
+          <i class="fas fa-award"></i>
+          <h3>Nenhum certificado ainda</h3>
+          <p>Conclua um curso com nota mínima de 70% para ganhar seu certificado!</p>
+          <a href="#" onclick="showSection('basic-courses',null)" class="btn btn-primary">Começar um Curso</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section class="dash-section" id="section-profile">
+      <div class="section-page-header">
+        <h2><i class="fas fa-user-cog"></i> Meu Perfil</h2>
+        <p>Gerencie suas informações pessoais e configurações de conta.</p>
+      </div>
+      <div class="profile-grid">
+        <div class="dash-card profile-card">
+          <div class="profile-avatar-large">
+            <div class="avatar-circle"><i class="fas fa-user"></i></div>
+            <button class="btn btn-outline btn-sm mt-10">Alterar foto</button>
+          </div>
+          <div class="profile-status">
+            <span class="plan-badge free" id="profilePlanBadge"><i class="fas fa-user"></i> Plano Gratuito</span>
+            <p id="profileMemberSince">Membro desde: 2026</p>
+          </div>
+        </div>
+        <div class="dash-card profile-form-card">
+          <h3>Informações Pessoais</h3>
+          <form id="profileForm" onsubmit="saveProfile(event)">
+            <div class="form-group">
+              <label><i class="fas fa-user"></i> Nome Completo</label>
+              <input type="text" id="profName" placeholder="Seu nome completo"/>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-envelope"></i> E-mail</label>
+              <input type="email" id="profEmail" placeholder="seu@email.com"/>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-phone"></i> Telefone</label>
+              <input type="text" id="profPhone" placeholder="(11) 99999-0000"/>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-briefcase"></i> Profissão</label>
+              <input type="text" id="profJob" placeholder="Ex: Engenheiro Civil"/>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-map-marker-alt"></i> Cidade / Estado</label>
+              <input type="text" id="profCity" placeholder="Ex: São Paulo, SP"/>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Salvar Alterações</button>
+          </form>
+        </div>
+        <div class="dash-card">
+          <h3>Alterar Senha</h3>
+          <form id="passForm" onsubmit="changePassword(event)">
+            <div class="form-group">
+              <label><i class="fas fa-lock"></i> Senha Atual</label>
+              <div class="input-password">
+                <input type="password" id="curPass" placeholder="Senha atual"/>
+                <button type="button" class="toggle-pass" onclick="togglePassword('curPass')"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-lock"></i> Nova Senha</label>
+              <div class="input-password">
+                <input type="password" id="newPass" placeholder="Nova senha"/>
+                <button type="button" class="toggle-pass" onclick="togglePassword('newPass')"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-lock"></i> Confirmar Nova Senha</label>
+              <div class="input-password">
+                <input type="password" id="confPass" placeholder="Confirme a nova senha"/>
+                <button type="button" class="toggle-pass" onclick="togglePassword('confPass')"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-outline"><i class="fas fa-key"></i> Alterar Senha</button>
+          </form>
+        </div>
+        <div class="dash-card">
+          <h3><i class="fas fa-history"></i> Histórico de Cursos</h3>
+          <div id="historyContainer">
+            <div class="empty-state">
+              <i class="fas fa-book"></i>
+              <p>Nenhum histórico ainda.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUBSCRIPTION -->
+    <section class="dash-section" id="section-subscription">
+      <div class="section-page-header">
+        <h2><i class="fas fa-star"></i> Assinatura Premium</h2>
+        <p>Desbloqueie todo o potencial da plataforma com o plano Premium.</p>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-card free-plan">
+          <div class="sub-plan-header">
+            <i class="fas fa-user"></i>
+            <h3>Plano Gratuito</h3>
+            <div class="sub-price">R$ 0<span>/mês</span></div>
+          </div>
+          <ul class="sub-benefits">
+            <li class="ok"><i class="fas fa-check"></i> Acesso a cursos básicos</li>
+            <li class="ok"><i class="fas fa-check"></i> Certificados básicos</li>
+            <li class="no"><i class="fas fa-times"></i> Cursos avançados</li>
+            <li class="no"><i class="fas fa-times"></i> Download de materiais</li>
+            <li class="no"><i class="fas fa-times"></i> Suporte prioritário</li>
+          </ul>
+          <button class="btn btn-outline btn-full" disabled>Plano Atual</button>
+        </div>
+        <div class="sub-card premium-plan">
+          <div class="sub-badge-top"><i class="fas fa-crown"></i> Mais Popular</div>
+          <div class="sub-plan-header">
+            <i class="fas fa-crown"></i>
+            <h3>Plano Premium</h3>
+            <div class="sub-price">R$ 79,99<span>/mês</span></div>
+          </div>
+          <ul class="sub-benefits">
+            <li class="ok"><i class="fas fa-check"></i> Todos os cursos básicos</li>
+            <li class="ok"><i class="fas fa-check"></i> Cursos avançados ilimitados</li>
+            <li class="ok"><i class="fas fa-check"></i> Certificados premium</li>
+            <li class="ok"><i class="fas fa-check"></i> Download de materiais PDF</li>
+            <li class="ok"><i class="fas fa-check"></i> Suporte prioritário</li>
+            <li class="ok"><i class="fas fa-check"></i> Cancele quando quiser</li>
+          </ul>
+          <div class="payment-methods">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fas fa-barcode"></i>
+            <i class="fas fa-qrcode"></i>
+          </div>
+          <button class="btn btn-gold btn-full btn-lg" onclick="handleSubscription()"><i class="fas fa-crown"></i> Assinar Agora</button>
+          <p class="sub-note">Renovação automática · Cancele a qualquer momento</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUPPORT -->
+    <section class="dash-section" id="section-support">
+      <div class="section-page-header">
+        <h2><i class="fas fa-headset"></i> Suporte</h2>
+        <p>Nossa equipe está pronta para te ajudar.</p>
+      </div>
+      <div class="support-grid">
+        <div class="dash-card support-card">
+          <i class="fas fa-comments"></i>
+          <h3>Chat ao Vivo</h3>
+          <p>Fale diretamente com nossa equipe de suporte em tempo real.</p>
+          <button class="btn btn-primary">Iniciar Chat</button>
+        </div>
+        <div class="dash-card support-card">
+          <i class="fas fa-envelope"></i>
+          <h3>E-mail</h3>
+          <p>Envie sua dúvida e responderemos em até 24 horas úteis.</p>
+          <a href="mailto:suporte@construeduca.com.br" class="btn btn-outline">Enviar E-mail</a>
+        </div>
+        <div class="dash-card support-card">
+          <i class="fab fa-whatsapp"></i>
+          <h3>WhatsApp</h3>
+          <p>Atendimento pelo WhatsApp em horário comercial.</p>
+          <a href="https://wa.me/5511999990000" target="_blank" class="btn btn-outline">Abrir WhatsApp</a>
+        </div>
+        <div class="dash-card support-card">
+          <i class="fas fa-question-circle"></i>
+          <h3>FAQ</h3>
+          <p>Perguntas frequentes e respostas rápidas para suas dúvidas.</p>
+          <button class="btn btn-outline">Ver FAQ</button>
+        </div>
+      </div>
+
+      <div class="dash-card mt-20">
+        <h3><i class="fas fa-paper-plane"></i> Enviar Mensagem</h3>
+        <form id="supportForm" onsubmit="sendSupportMessage(event)" class="support-form">
+          <div class="form-group">
+            <label>Assunto</label>
+            <select>
+              <option>Problema com acesso</option>
+              <option>Dúvida sobre cursos</option>
+              <option>Pagamento</option>
+              <option>Certificados</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Mensagem</label>
+            <textarea placeholder="Descreva sua dúvida ou problema..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Enviar Mensagem</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- COURSE MODAL -->
+<div class="modal-overlay" id="courseModal" style="display:none;">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+    <div class="modal-header">
+      <div class="modal-icon" id="modalIcon"></div>
+      <div>
+        <h2 id="modalTitle"></h2>
+        <span id="modalTag"></span>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 CivEnsina. Todos os direitos reservados.</p>
-      <p>CNPJ: 00.000.000/0001-00</p>
+    <div class="modal-body">
+      <div class="modal-progress-section">
+        <div class="modal-prog-label"><span>Progresso do Curso</span><span id="modalPercent">0%</span></div>
+        <div class="modal-prog-bar"><div class="modal-prog-fill" id="modalProgFill"></div></div>
+      </div>
+      <div class="modal-tabs">
+        <button class="mtab active" onclick="switchModalTab('aulas')"><i class="fas fa-video"></i> Aulas</button>
+        <button class="mtab" onclick="switchModalTab('material')"><i class="fas fa-file-pdf"></i> Material</button>
+        <button class="mtab" onclick="switchModalTab('quiz')"><i class="fas fa-question-circle"></i> Questionário</button>
+      </div>
+      <div class="mtab-content active" id="mtab-aulas">
+        <div class="video-player">
+          <div class="video-placeholder"><i class="fas fa-play-circle"></i><p>Clique para assistir a aula</p></div>
+        </div>
+        <div class="lessons-list" id="lessonsList"></div>
+      </div>
+      <div class="mtab-content" id="mtab-material">
+        <div class="material-list">
+          <div class="material-item"><i class="fas fa-file-pdf"></i><span>Apostila do Curso</span><button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> Baixar</button></div>
+          <div class="material-item"><i class="fas fa-file-powerpoint"></i><span>Slides das Aulas</span><button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> Baixar</button></div>
+          <div class="material-item"><i class="fas fa-file-word"></i><span>Guia de Referências</span><button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> Baixar</button></div>
+        </div>
+      </div>
+      <div class="mtab-content" id="mtab-quiz">
+        <div class="quiz-placeholder">
+          <i class="fas fa-question-circle"></i>
+          <h3>Questionário Final</h3>
+          <p>Complete todas as aulas para desbloquear o questionário e ganhar seu certificado!</p>
+          <button class="btn btn-primary" onclick="completeQuiz()"><i class="fas fa-play"></i> Fazer Questionário</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary btn-lg" onclick="completeLesson()"><i class="fas fa-check"></i> Marcar Aula como Concluída</button>
     </div>
   </div>
-</footer>
+</div>
 
-<script src="js/main.js"></script>
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="js/dashboard.js"></script>
 </body>
 </html>
