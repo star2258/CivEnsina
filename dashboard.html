@@ -36,6 +36,7 @@
     <a href="#" class="nav-item" onclick="showSection('basic-courses', this)"><i class="fas fa-book-open"></i><span>Cursos Básicos</span><span class="nav-badge free-badge">Grátis</span></a>
     <a href="#" class="nav-item" onclick="showSection('advanced-courses', this)"><i class="fas fa-crown"></i><span>Cursos Avançados</span><span class="nav-badge prem-badge">Premium</span></a>
     <a href="#" class="nav-item" onclick="showSection('certificates', this)"><i class="fas fa-certificate"></i><span>Certificados</span></a>
+    <a href="#" class="nav-item" onclick="showSection('atividade', this)"><i class="fas fa-video"></i><span>Atividade Prática</span><span class="nav-badge new-badge">Novo</span></a>
     <a href="#" class="nav-item" onclick="showSection('profile', this)"><i class="fas fa-user-cog"></i><span>Perfil</span></a>
     <a href="#" class="nav-item" onclick="showSection('subscription', this)"><i class="fas fa-star"></i><span>Assinatura Premium</span></a>
     <a href="#" class="nav-item" onclick="showSection('support', this)"><i class="fas fa-headset"></i><span>Suporte</span></a>
@@ -202,6 +203,104 @@
       </div>
     </section>
 
+    <section class="dash-section" id="section-atividade">
+  <div class="section-page-header">
+    <h2><i class="fas fa-video"></i> Atividade Prática</h2>
+    <p>Envie um vídeo executando uma atividade que você aprendeu em algum curso e mostre sua evolução!</p>
+  </div>
+ 
+  <!-- UPLOAD CARD -->
+  <div class="dash-card atividade-upload-card">
+    <div class="ativ-upload-header">
+      <div class="ativ-header-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+      <div>
+        <h3>Enviar Novo Vídeo</h3>
+        <p>Formatos aceitos: MP4, MOV, AVI, WebM · Tamanho máximo: 500 MB</p>
+      </div>
+    </div>
+ 
+    <div class="ativ-form-grid">
+      <!-- Curso vinculado -->
+      <div class="form-group">
+        <label><i class="fas fa-book-open"></i> Curso Relacionado</label>
+        <select id="atividadeCurso">
+          <option value="">— Selecione um curso —</option>
+          <!-- Populado via JS -->
+        </select>
+      </div>
+ 
+      <!-- Título da atividade -->
+      <div class="form-group">
+        <label><i class="fas fa-pen"></i> Título da Atividade</label>
+        <input type="text" id="atividadeTitulo" placeholder="Ex: Instalação de EPI na obra"/>
+      </div>
+ 
+      <!-- Descrição -->
+      <div class="form-group full-width">
+        <label><i class="fas fa-align-left"></i> Descrição (opcional)</label>
+        <textarea id="atividadeDescricao" rows="3" placeholder="Descreva brevemente o que você fez na atividade..."></textarea>
+      </div>
+ 
+      <!-- Drop Zone -->
+      <div class="form-group full-width">
+        <label><i class="fas fa-film"></i> Vídeo da Atividade</label>
+        <div class="ativ-drop-zone" id="atividadeDropZone" onclick="document.getElementById('atividadeFile').click()">
+          <input type="file" id="atividadeFile" accept="video/*" style="display:none" onchange="handleVideoSelect(event)"/>
+          <div class="adz-idle" id="adzIdle">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Arraste seu vídeo aqui ou <strong>clique para selecionar</strong></p>
+            <span>MP4, MOV, AVI ou WebM · máx. 500 MB</span>
+          </div>
+          <div class="adz-preview" id="adzPreview" style="display:none">
+            <video id="atividadeVideoPreview" controls></video>
+            <div class="adz-preview-info">
+              <i class="fas fa-check-circle"></i>
+              <span id="adzFileName">arquivo.mp4</span>
+              <button type="button" class="btn btn-outline btn-sm" onclick="clearVideo(event)">
+                <i class="fas fa-times"></i> Remover
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- Barra de progresso de upload -->
+    <div class="ativ-upload-progress" id="atividadeUploadProgress" style="display:none">
+      <div class="aup-label">
+        <span><i class="fas fa-spinner fa-spin"></i> Enviando vídeo...</span>
+        <span id="aupPercent">0%</span>
+      </div>
+      <div class="aup-bar"><div class="aup-fill" id="aupFill"></div></div>
+    </div>
+ 
+    <div class="ativ-form-actions">
+      <button class="btn btn-outline" onclick="clearAtividadeForm()">
+        <i class="fas fa-times"></i> Limpar
+      </button>
+      <button class="btn btn-primary btn-lg" onclick="submitAtividade()">
+        <i class="fas fa-paper-plane"></i> Enviar Atividade
+      </button>
+    </div>
+  </div>
+ 
+  <!-- MINHAS ATIVIDADES -->
+  <div class="dash-card mt-20">
+    <div class="card-header-dash">
+      <h3><i class="fas fa-photo-video"></i> Minhas Atividades Enviadas</h3>
+      <span class="ativ-count-badge" id="atividadeCount">0 envios</span>
+    </div>
+    <div id="atividadeListContainer">
+      <div class="empty-state" id="atividadeEmpty">
+        <i class="fas fa-video"></i>
+        <p>Você ainda não enviou nenhuma atividade prática.</p>
+        <p style="font-size:0.85rem;color:var(--steel)">Grave um vídeo aplicando o que aprendeu e envie acima!</p>
+      </div>
+      <div class="atividade-grid" id="atividadeGrid" style="display:none"></div>
+    </div>
+  </div>
+</section>
+    
     <!-- PROFILE -->
     <section class="dash-section" id="section-profile">
       <div class="section-page-header">
