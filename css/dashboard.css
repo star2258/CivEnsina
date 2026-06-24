@@ -451,3 +451,371 @@
   .dash-cards   { grid-template-columns: 1fr 1fr; gap: 12px; }
   .topbar-search { display: none; }
 }
+
+
+/* =============================================================
+   ATIVIDADE PRÁTICA — Adicionar no FINAL do arquivo dashboard.css
+   ============================================================= */
+
+/* ---- BADGE "NOVO" NO SIDEBAR ---- */
+.nav-badge.new-badge {
+  background: linear-gradient(135deg, #2dd4bf, #0ea5e9);
+  color: #fff;
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border-radius: 20px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+/* ---- CARD PRINCIPAL ---- */
+.atividade-upload-card {
+  padding: 28px;
+}
+
+.ativ-upload-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 28px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(139,155,180,0.12);
+}
+
+.ativ-header-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(232,98,26,0.3);
+}
+
+.ativ-upload-header h3 {
+  margin-bottom: 4px;
+  font-size: 1.15rem;
+}
+
+.ativ-upload-header p {
+  font-size: 0.83rem;
+  color: var(--steel);
+}
+
+/* ---- GRID DO FORMULÁRIO ---- */
+.ativ-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.ativ-form-grid .full-width {
+  grid-column: 1 / -1;
+}
+
+/* ---- DROP ZONE ---- */
+.ativ-drop-zone {
+  border: 2px dashed rgba(139,155,180,0.25);
+  border-radius: var(--radius);
+  background: rgba(27,46,75,0.25);
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.ativ-drop-zone:hover,
+.ativ-drop-zone.drag-over {
+  border-color: var(--orange);
+  background: rgba(232,98,26,0.06);
+}
+
+.adz-idle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  padding: 24px;
+  pointer-events: none;
+}
+
+.adz-idle i {
+  font-size: 2.5rem;
+  color: var(--steel);
+  margin-bottom: 4px;
+}
+
+.adz-idle p {
+  font-size: 0.92rem;
+  color: var(--steel-light);
+}
+
+.adz-idle strong {
+  color: var(--orange);
+}
+
+.adz-idle span {
+  font-size: 0.78rem;
+  color: var(--steel);
+}
+
+/* ---- PREVIEW DO VÍDEO ---- */
+.adz-preview {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.adz-preview video {
+  width: 100%;
+  max-height: 260px;
+  border-radius: 10px;
+  background: #000;
+  outline: none;
+}
+
+.adz-preview-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--steel-light);
+}
+
+.adz-preview-info i {
+  color: var(--success);
+  font-size: 1rem;
+}
+
+.adz-preview-info span {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---- BARRA DE PROGRESSO DE UPLOAD ---- */
+.ativ-upload-progress {
+  margin-top: 20px;
+  background: rgba(27,46,75,0.35);
+  border: 1px solid rgba(139,155,180,0.12);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+}
+
+.aup-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--steel-light);
+  margin-bottom: 10px;
+}
+
+.aup-label i {
+  color: var(--orange);
+}
+
+.aup-bar {
+  height: 6px;
+  background: rgba(139,155,180,0.12);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.aup-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--orange), var(--orange-light));
+  border-radius: 3px;
+  transition: width 0.2s ease;
+}
+
+/* ---- AÇÕES ---- */
+.ativ-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(139,155,180,0.10);
+}
+
+/* ---- BADGE DE CONTAGEM ---- */
+.ativ-count-badge {
+  font-size: 0.78rem;
+  background: rgba(232,98,26,0.15);
+  color: var(--orange);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  border: 1px solid rgba(232,98,26,0.2);
+}
+
+/* ---- GRID DE ATIVIDADES ENVIADAS ---- */
+.atividade-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+  padding-top: 16px;
+}
+
+/* ---- CARD DE CADA ATIVIDADE ---- */
+.atividade-item {
+  background: rgba(27,46,75,0.35);
+  border: 1px solid rgba(139,155,180,0.12);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.atividade-item:hover {
+  border-color: rgba(232,98,26,0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.ativ-thumb {
+  position: relative;
+  background: #0a0e14;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.ativ-thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ativ-play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.45);
+  font-size: 2.2rem;
+  color: rgba(255,255,255,0.85);
+  transition: var(--transition);
+}
+
+.ativ-thumb:hover .ativ-play-overlay {
+  background: rgba(0,0,0,0.6);
+  color: var(--orange);
+}
+
+.ativ-card-body {
+  padding: 14px 16px;
+}
+
+.ativ-card-course {
+  font-size: 0.72rem;
+  color: var(--orange);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 5px;
+}
+
+.ativ-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.ativ-card-desc {
+  font-size: 0.8rem;
+  color: var(--steel);
+  line-height: 1.5;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ativ-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid rgba(139,155,180,0.10);
+}
+
+.ativ-card-date {
+  font-size: 0.75rem;
+  color: var(--steel);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ativ-status-badge {
+  font-size: 0.7rem;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.ativ-status-badge.enviado {
+  background: rgba(45,212,191,0.12);
+  color: #2dd4bf;
+  border: 1px solid rgba(45,212,191,0.25);
+}
+
+.ativ-status-badge.analisando {
+  background: rgba(255,179,0,0.12);
+  color: var(--gold);
+  border: 1px solid rgba(255,179,0,0.25);
+}
+
+/* ---- BOTÃO EXCLUIR ---- */
+.ativ-del-btn {
+  background: none;
+  border: none;
+  color: var(--steel);
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  transition: var(--transition);
+}
+
+.ativ-del-btn:hover {
+  color: var(--danger);
+  background: rgba(239,68,68,0.1);
+}
+
+/* ---- RESPONSIVO ---- */
+@media (max-width: 768px) {
+  .ativ-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .atividade-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ativ-form-actions {
+    flex-direction: column;
+  }
+
+  .ativ-form-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
