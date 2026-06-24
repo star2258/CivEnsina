@@ -52,6 +52,9 @@
         <button class="auth-tab" id="tabCadastro" onclick="switchTab('cadastro')">
           <i class="fas fa-user-plus"></i> Cadastrar
         </button>
+        <button class="auth-tab" id="tabVideo" onclick="switchTab('video')">
+          <i class="fas fa-video"></i> Atividade
+        </button>
       </div>
 
       <!-- LOGIN FORM -->
@@ -136,6 +139,71 @@
         <p class="switch-auth">Já tem conta? <a href="#" onclick="switchTab('login')">Fazer login</a></p>
       </div>
 
+      <!-- VÍDEO PRÁTICO PANEL -->
+      <div class="auth-form-panel" id="panelVideo">
+        <div class="form-header">
+          <h2>Atividade Prática</h2>
+          <p>Envie seu vídeo demonstrando a execução da atividade do curso.</p>
+        </div>
+
+        <!-- STATUS: não logado -->
+        <div id="videoLoginAlert" class="video-login-alert">
+          <i class="fas fa-lock"></i>
+          <div>
+            <strong>Faça login para enviar seu vídeo</strong>
+            <p>Você precisa estar logado e aprovado na etapa teórica para enviar a atividade prática.</p>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="switchTab('login')"><i class="fas fa-sign-in-alt"></i> Entrar</button>
+        </div>
+
+        <!-- ÁREA DE UPLOAD -->
+        <div id="videoUploadArea">
+          <div class="video-specs-row">
+            <div class="vspec"><i class="fas fa-hourglass-half"></i><span>3 a 10 min</span></div>
+            <div class="vspec"><i class="fas fa-file-video"></i><span>MP4 / MOV</span></div>
+            <div class="vspec"><i class="fas fa-hdd"></i><span>Máx. 500 MB</span></div>
+            <div class="vspec"><i class="fas fa-calendar-alt"></i><span>Prazo 7 dias</span></div>
+          </div>
+
+          <label class="video-drop-area" id="videoDropArea" for="videoFileInput">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Arraste o vídeo aqui ou <span>clique para selecionar</span></p>
+            <small>MP4 ou MOV · até 500 MB · 3 a 10 minutos</small>
+            <input type="file" id="videoFileInput" accept="video/mp4,video/quicktime" style="display:none" onchange="onVideoSelected(this)"/>
+          </label>
+
+          <div id="videoPreview" style="display:none;" class="video-preview-box">
+            <i class="fas fa-file-video"></i>
+            <div class="video-preview-info">
+              <strong id="videoFileName"></strong>
+              <span id="videoFileSize"></span>
+            </div>
+            <button class="video-remove-btn" onclick="removeVideo()"><i class="fas fa-times"></i></button>
+          </div>
+
+          <div class="video-checklist">
+            <p><i class="fas fa-clipboard-list"></i> Seu vídeo deve mostrar:</p>
+            <ul>
+              <li><i class="fas fa-hard-hat"></i> Uso correto de EPIs e normas de segurança</li>
+              <li><i class="fas fa-tools"></i> Uso adequado de materiais e ferramentas</li>
+              <li><i class="fas fa-tasks"></i> Aplicação das técnicas aprendidas no curso</li>
+              <li><i class="fas fa-ruler-combined"></i> Execução correta dos procedimentos</li>
+            </ul>
+          </div>
+
+          <button class="btn btn-primary btn-full btn-lg" id="btnSubmitVideo" onclick="submitVideo()" disabled>
+            <i class="fas fa-paper-plane"></i> Enviar Atividade Prática
+          </button>
+
+          <div id="videoSuccessMsg" style="display:none;" class="video-success">
+            <i class="fas fa-check-circle"></i>
+            <h3>Vídeo enviado com sucesso!</h3>
+            <p>Nossa equipe analisará sua atividade em até <strong>5 dias úteis</strong>. Você receberá uma notificação por e-mail com o resultado.</p>
+            <button class="btn btn-outline" onclick="switchTab('login')">Voltar ao Início</button>
+          </div>
+        </div>
+      </div>
+
       <!-- FORGOT PASSWORD MODAL INLINE -->
       <div class="forgot-panel" id="forgotPanel" style="display:none;">
         <div class="form-header">
@@ -166,5 +234,85 @@
 <div class="toast" id="toast"></div>
 
 <script src="js/auth.js"></script>
+<script>
+// Override switchTab to include video tab
+const _origSwitchTab = switchTab;
+function switchTab(tab) {
+  const panels = ['panelLogin','panelCadastro','panelVideo'];
+  const tabs = ['tabLogin','tabCadastro','tabVideo'];
+  panels.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.classList.remove('active'); el.style.display = ''; }
+  });
+  tabs.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  });
+  document.getElementById('forgotPanel').style.display = 'none';
+
+  if (tab === 'login') {
+    document.getElementById('panelLogin').classList.add('active');
+    document.getElementById('tabLogin').classList.add('active');
+  } else if (tab === 'cadastro') {
+    document.getElementById('panelCadastro').classList.add('active');
+    document.getElementById('tabCadastro').classList.add('active');
+  } else if (tab === 'video') {
+    document.getElementById('panelVideo').classList.add('active');
+    document.getElementById('tabVideo').classList.add('active');
+    checkVideoAccess();
+  }
+  window.location.hash = tab;
+}
+
+function checkVideoAccess() {
+  const user = JSON.parse(localStorage.getItem('ceCurrentUser') || 'null');
+  const loginAlert = document.getElementById('videoLoginAlert');
+  const uploadArea = document.getElementById('videoUploadArea');
+  if (!user) {
+    loginAlert.style.display = 'flex';
+    uploadArea.style.display = 'none';
+  } else {
+    loginAlert.style.display = 'none';
+    uploadArea.style.display = 'block';
+  }
+}
+
+function onVideoSelected(input) {
+  if (!input.files.length) return;
+  const file = input.files[0];
+  document.getElementById('videoDropArea').style.display = 'none';
+  const preview = document.getElementById('videoPreview');
+  preview.style.display = 'flex';
+  document.getElementById('videoFileName').textContent = file.name;
+  document.getElementById('videoFileSize').textContent = (file.size / 1024 / 1024).toFixed(1) + ' MB';
+  document.getElementById('btnSubmitVideo').disabled = false;
+}
+
+function removeVideo() {
+  document.getElementById('videoFileInput').value = '';
+  document.getElementById('videoPreview').style.display = 'none';
+  document.getElementById('videoDropArea').style.display = 'flex';
+  document.getElementById('btnSubmitVideo').disabled = true;
+}
+
+function submitVideo() {
+  const btn = document.getElementById('btnSubmitVideo');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+  setTimeout(() => {
+    document.getElementById('videoDropArea').style.display = 'none';
+    document.getElementById('videoPreview').style.display = 'none';
+    document.querySelector('.video-specs-row').style.display = 'none';
+    document.querySelector('.video-checklist').style.display = 'none';
+    btn.style.display = 'none';
+    document.getElementById('videoSuccessMsg').style.display = 'flex';
+  }, 2000);
+}
+
+// Handle hash on load for video tab
+window.addEventListener('load', () => {
+  if (window.location.hash === '#video') switchTab('video');
+});
+</script>
 </body>
 </html>
