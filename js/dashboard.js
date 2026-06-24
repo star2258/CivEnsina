@@ -438,3 +438,304 @@ function saveUser() {
 document.getElementById('courseModal').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
 });
+
+/* =============================================================
+   ATIVIDADE PRÁTICA — Adicionar no FINAL do arquivo dashboard.js
+   ============================================================= */
+
+// ---- POPULAR SELECT DE CURSOS ----
+// Chame renderAtividadeSelect() no bloco window.addEventListener('load', ...)
+// do dashboard.js, junto com as outras chamadas de render.
+// Exemplo:
+//   renderAtividadeSelect();
+//   renderAtividadeList();
+
+function renderAtividadeSelect() {
+  const select = document.getElementById('atividadeCurso');
+  if (!select) return;
+
+  const allCourses = [...basicCourses, ...advancedCourses];
+  const myCourses = (currentUser.courses || []).filter(c => c.progress > 0);
+
+  // Mostra todos os cursos que o usuário começou; se nenhum, mostra todos
+  const options = myCourses.length > 0
+    ? myCourses.map(c => allCourses.find(x => x.id === c.id)).filter(Boolean)
+    : allCourses;
+
+  select.innerHTML = '<option value="">— Selecione um curso —</option>' +
+    options.map(c => `<option value="${c.id}">${c.title}</option>`).join('');
+}
+
+// ---- DRAG & DROP NA DROP ZONE ----
+(function initDropZone() {
+  // Aguarda o DOM carregar
+  window.addEventListener('load', () => {
+    const zone = document.getElementById('atividadeDropZone');
+    if (!zone) return;
+
+    zone.addEventListener('dragover', e => {
+      e.preventDefault();
+      zone.classList.add('drag-over');
+    });
+
+    zone.addEventListener('dragleave', () => {
+      zone.classList.remove('drag-over');
+    });
+
+    zone.addEventListener('drop', e => {
+      e.preventDefault();
+      zone.classList.remove('drag-over');
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith('video/')) {
+        loadVideoPreview(file);
+      } else {
+        showToast('Por favor, selecione um arquivo de vídeo válido.', 'error');
+      }
+    });
+  });
+})();
+
+// ---- SELEÇÃO VIA INPUT ----
+function handleVideoSelect(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  if (!file.type.startsWith('video/')) {
+    showToast('Formato inválido. Use MP4, MOV, AVI ou WebM.', 'error');
+    return;
+  }
+  if (file.size > 500 * 1024 * 1024) {
+    showToast('Vídeo muito grande! O limite é de 500 MB.', 'error');
+    return;
+  }
+  loadVideoPreview(file);
+}
+
+// ---- CARREGAR PREVIEW ----
+function loadVideoPreview(file) {
+  const url = URL.createObjectURL(file);
+  const video = document.getElementById('atividadeVideoPreview');
+  video.src = url;
+
+  document.getElementById('adzFileName').textContent = file.name;
+  document.getElementById('adzIdle').style.display = 'none';
+  document.getElementById('adzPreview').style.display = 'flex';
+
+  // Guarda o arquivo no input para recuperar depois
+  const input = document.getElementById('atividadeFile');
+  // Armazena referência via propriedade custom
+  input._selectedFile = file;
+}
+
+// ---- REMOVER VÍDEO ----
+function clearVideo(e) {
+  e.stopPropagation(); // Não abre o seletor de arquivos
+  const video = document.getElementById('atividadeVideoPreview');
+  if (video.src) URL.revokeObjectURL(video.src);
+  video.src = '';
+
+  document.getElementById('adzIdle').style.display = 'flex';
+  document.getElementById('adzPreview').style.display = 'none';
+
+  const input = document.getElementById('atividadeFile');
+  input.value = '';
+  input._selectedFile = null;
+}
+
+// ---- LIMPAR FORMULÁRIO INTEIRO ----
+function clearAtividadeForm() {
+  document.getElementById('atividadeCurso').value = '';
+  document.getElementById('atividadeTitulo').value = '';
+  document.getElementById('atividadeDescricao').value = '';
+  clearVideo({ stopPropagation: () => {} });
+}
+
+// ---- SUBMIT DA ATIVIDADE ----
+function submitAtividade() {
+  const cursoId   = document.getElementById('atividadeCurso').value;
+  const titulo    = document.getElementById('atividadeTitulo').value.trim();
+  const descricao = document.getElementById('atividadeDescricao').value.trim();
+  const input     = document.getElementById('atividadeFile');
+  const file      = input._selectedFile || (input.files && input.files[0]);
+
+  // Validações
+  if (!cursoId) {
+    showToast('Selecione o curso relacionado.', 'error');
+    return;
+  }
+  if (!titulo) {
+    showToast('Informe um título para a atividade.', 'error');
+    return;
+  }
+  if (!file) {
+    showToast('Selecione um vídeo para enviar.', 'error');
+    return;
+  }
+
+  // Simula upload com barra de progresso
+  const progressEl = document.getElementById('atividadeUploadProgress');
+  const fillEl     = document.getElementById('aupFill');
+  const pctEl      = document.getElementById('aupPercent');
+  progressEl.style.display = 'block';
+
+  let pct = 0;
+  const interval = setInterval(() => {
+    pct += Math.random() * 12 + 5;
+    if (pct >= 100) {
+      pct = 100;
+      clearInterval(interval);
+      finalizarEnvio(cursoId, titulo, descricao, file);
+    }
+    fillEl.style.width = pct + '%';
+    pctEl.textContent  = Math.floor(pct) + '%';
+  }, 180);
+}
+
+// ---- FINALIZAR E SALVAR ----
+function finalizarEnvio(cursoId, titulo, descricao, file) {
+  const allCourses = [...basicCourses, ...advancedCourses];
+  const curso = allCourses.find(c => c.id === cursoId);
+
+  // Lê o vídeo como base64 para salvar localmente
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const atividades = getAtividades();
+
+    const nova = {
+      id:         'AT' + Date.now(),
+      cursoId,
+      cursoNome:  curso ? curso.title : 'Curso',
+      titulo,
+      descricao,
+      fileName:   file.name,
+      fileSize:   formatFileSize(file.size),
+      videoData:  e.target.result,   // base64 — funciona offline/localStorage
+      data:       new Date().toLocaleDateString('pt-BR'),
+      status:     'enviado',
+    };
+
+    atividades.push(nova);
+    saveAtividades(atividades);
+
+    // Feedback visual
+    document.getElementById('atividadeUploadProgress').style.display = 'none';
+    showToast('✅ Atividade enviada com sucesso!', 'success');
+    clearAtividadeForm();
+    renderAtividadeList();
+  };
+  reader.readAsDataURL(file);
+}
+
+// ---- RENDERIZAR LISTA ----
+function renderAtividadeList() {
+  const atividades = getAtividades();
+  const container  = document.getElementById('atividadeListContainer');
+  const emptyEl    = document.getElementById('atividadeEmpty');
+  const gridEl     = document.getElementById('atividadeGrid');
+  const countEl    = document.getElementById('atividadeCount');
+
+  if (!container) return;
+
+  countEl.textContent = `${atividades.length} envio${atividades.length !== 1 ? 's' : ''}`;
+
+  if (atividades.length === 0) {
+    emptyEl.style.display = 'block';
+    gridEl.style.display  = 'none';
+    return;
+  }
+
+  emptyEl.style.display = 'none';
+  gridEl.style.display  = 'grid';
+
+  gridEl.innerHTML = atividades.slice().reverse().map(a => `
+    <div class="atividade-item" id="ativ-${a.id}">
+      <div class="ativ-thumb" onclick="toggleAtivVideo('${a.id}')">
+        <video id="vid-${a.id}" src="${a.videoData}" preload="metadata" playsinline></video>
+        <div class="ativ-play-overlay" id="overlay-${a.id}">
+          <i class="fas fa-play-circle"></i>
+        </div>
+      </div>
+      <div class="ativ-card-body">
+        <div class="ativ-card-course"><i class="fas fa-book-open"></i> ${a.cursoNome}</div>
+        <div class="ativ-card-title">${a.titulo}</div>
+        ${a.descricao ? `<div class="ativ-card-desc">${a.descricao}</div>` : ''}
+        <div class="ativ-card-footer">
+          <span class="ativ-card-date"><i class="fas fa-calendar-alt"></i> ${a.data}</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="ativ-status-badge enviado"><i class="fas fa-check"></i> Enviado</span>
+            <button class="ativ-del-btn" onclick="excluirAtividade('${a.id}')" title="Excluir">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ---- PLAY / PAUSE NO CARD ----
+function toggleAtivVideo(id) {
+  const video   = document.getElementById('vid-' + id);
+  const overlay = document.getElementById('overlay-' + id);
+
+  if (video.paused) {
+    // Pausa todos os outros vídeos antes
+    document.querySelectorAll('.ativ-thumb video').forEach(v => {
+      if (v !== video) {
+        v.pause();
+        const ovl = document.getElementById('overlay-' + v.id.replace('vid-', ''));
+        if (ovl) ovl.style.opacity = '1';
+      }
+    });
+    video.play();
+    overlay.style.opacity = '0';
+  } else {
+    video.pause();
+    overlay.style.opacity = '1';
+  }
+}
+
+// ---- EXCLUIR ATIVIDADE ----
+function excluirAtividade(id) {
+  if (!confirm('Tem certeza que deseja excluir esta atividade?')) return;
+
+  let atividades = getAtividades();
+  atividades = atividades.filter(a => a.id !== id);
+  saveAtividades(atividades);
+
+  // Remove o elemento da tela sem precisar recriar tudo
+  const el = document.getElementById('ativ-' + id);
+  if (el) el.remove();
+
+  renderAtividadeList(); // atualiza contagem e estado vazio
+  showToast('Atividade excluída.', '');
+}
+
+// ---- HELPERS DE ARMAZENAMENTO ----
+function getAtividades() {
+  const key = 'ceAtividades_' + (currentUser ? currentUser.id : 'guest');
+  try {
+    return JSON.parse(localStorage.getItem(key) || '[]');
+  } catch {
+    return [];
+  }
+}
+
+function saveAtividades(list) {
+  const key = 'ceAtividades_' + (currentUser ? currentUser.id : 'guest');
+  localStorage.setItem(key, JSON.stringify(list));
+}
+
+function formatFileSize(bytes) {
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+/*
+  ---------------------------------------------------------------
+  IMPORTANTE — adicione as chamadas abaixo dentro do bloco:
+  window.addEventListener('load', () => { ... }) do dashboard.js:
+
+    renderAtividadeSelect();
+    renderAtividadeList();
+  ---------------------------------------------------------------
+*/
