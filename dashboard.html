@@ -35,6 +35,7 @@
     <a href="#" class="nav-item active" onclick="showSection('home', this)"><i class="fas fa-home"></i><span>Início</span></a>
     <a href="#" class="nav-item" onclick="showSection('basic-courses', this)"><i class="fas fa-book-open"></i><span>Cursos Básicos</span><span class="nav-badge free-badge">Grátis</span></a>
     <a href="#" class="nav-item" onclick="showSection('advanced-courses', this)"><i class="fas fa-crown"></i><span>Cursos Avançados</span><span class="nav-badge prem-badge">Premium</span></a>
+    <a href="#" class="nav-item" onclick="showSection('avaliacao', this)"><i class="fas fa-clipboard-check"></i><span>Avaliação</span></a>
     <a href="#" class="nav-item" onclick="showSection('certificates', this)"><i class="fas fa-certificate"></i><span>Certificados</span></a>
     <a href="#" class="nav-item" onclick="showSection('profile', this)"><i class="fas fa-user-cog"></i><span>Perfil</span></a>
     <a href="#" class="nav-item" onclick="showSection('subscription', this)"><i class="fas fa-star"></i><span>Assinatura Premium</span></a>
@@ -184,6 +185,158 @@
         </div>
       </div>
       <div class="courses-dash-grid" id="advancedCoursesGrid"></div>
+    </section>
+
+    <!-- AVALIAÇÃO -->
+    <section class="dash-section" id="section-avaliacao">
+      <div class="section-page-header">
+        <h2><i class="fas fa-clipboard-check"></i> Avaliação Final</h2>
+        <p>Complete as duas etapas para obter seu certificado de conclusão.</p>
+      </div>
+
+      <!-- PROGRESS STEPS -->
+      <div class="av-steps">
+        <div class="av-step completed" id="avStep1">
+          <div class="av-step-icon"><i class="fas fa-book-open"></i></div>
+          <div class="av-step-line"></div>
+          <span>Etapa Teórica</span>
+        </div>
+        <div class="av-step locked" id="avStep2">
+          <div class="av-step-icon"><i class="fas fa-video"></i></div>
+          <div class="av-step-line"></div>
+          <span>Etapa Prática</span>
+        </div>
+        <div class="av-step locked" id="avStep3">
+          <div class="av-step-icon"><i class="fas fa-certificate"></i></div>
+          <span>Certificado</span>
+        </div>
+      </div>
+
+      <div class="av-grid">
+
+        <!-- ETAPA TEÓRICA -->
+        <div class="dash-card av-card" id="avCardTeorica">
+          <div class="av-card-header teorica">
+            <div class="av-card-icon"><i class="fas fa-book-open"></i></div>
+            <div>
+              <h3>Etapa Teórica</h3>
+              <span class="av-status-badge available"><i class="fas fa-circle"></i> Disponível</span>
+            </div>
+          </div>
+          <div class="av-card-body">
+            <p>A prova teórica avalia os conhecimentos adquiridos ao longo das aulas. São <strong>20 questões de múltipla escolha</strong> com tempo limite de 40 minutos. A nota mínima para aprovação é <strong>70%</strong>.</p>
+            <div class="av-info-grid">
+              <div class="av-info-item"><i class="fas fa-question-circle"></i><span>20 questões</span></div>
+              <div class="av-info-item"><i class="fas fa-clock"></i><span>40 minutos</span></div>
+              <div class="av-info-item"><i class="fas fa-percentage"></i><span>Mínimo 70%</span></div>
+              <div class="av-info-item"><i class="fas fa-redo"></i><span>2 tentativas</span></div>
+            </div>
+            <div class="av-requirements">
+              <h4><i class="fas fa-list-check"></i> Pré-requisitos</h4>
+              <ul>
+                <li class="req-ok"><i class="fas fa-check-circle"></i> Concluir todas as aulas do curso</li>
+                <li class="req-ok"><i class="fas fa-check-circle"></i> Assistir os vídeos complementares</li>
+                <li class="req-pending"><i class="fas fa-clock"></i> Revisar o material de apoio</li>
+              </ul>
+            </div>
+          </div>
+          <div class="av-card-footer">
+            <button class="btn btn-primary btn-lg" onclick="iniciarProvaTeorica()">
+              <i class="fas fa-play"></i> Iniciar Prova Teórica
+            </button>
+          </div>
+        </div>
+
+        <!-- ETAPA PRÁTICA -->
+        <div class="dash-card av-card locked-card" id="avCardPratica">
+          <div class="av-card-header pratica">
+            <div class="av-card-icon"><i class="fas fa-video"></i></div>
+            <div>
+              <h3>Etapa Prática</h3>
+              <span class="av-status-badge locked"><i class="fas fa-lock"></i> Bloqueada</span>
+            </div>
+          </div>
+          <div class="av-card-body">
+            <p>Após aprovação na prova teórica, você deverá <strong>gravar e enviar um vídeo</strong> demonstrando a execução de uma atividade prática relacionada ao conteúdo do curso.</p>
+            <div class="av-practical-info">
+              <h4><i class="fas fa-clipboard-list"></i> O vídeo deve demonstrar:</h4>
+              <ul class="av-checklist">
+                <li><i class="fas fa-hard-hat"></i> Uso adequado de EPIs e normas de segurança</li>
+                <li><i class="fas fa-tools"></i> Correta utilização de materiais e ferramentas</li>
+                <li><i class="fas fa-tasks"></i> Aplicação das técnicas aprendidas no curso</li>
+                <li><i class="fas fa-ruler-combined"></i> Cumprimento dos procedimentos ensinados</li>
+              </ul>
+            </div>
+            <div class="av-video-specs">
+              <h4><i class="fas fa-film"></i> Especificações do Vídeo</h4>
+              <div class="av-info-grid">
+                <div class="av-info-item"><i class="fas fa-hourglass-half"></i><span>3 a 10 min</span></div>
+                <div class="av-info-item"><i class="fas fa-file-video"></i><span>MP4 / MOV</span></div>
+                <div class="av-info-item"><i class="fas fa-hdd"></i><span>Máx. 500 MB</span></div>
+                <div class="av-info-item"><i class="fas fa-calendar-alt"></i><span>Prazo: 7 dias</span></div>
+              </div>
+            </div>
+            <div class="av-upload-area" id="avUploadArea">
+              <div class="av-upload-placeholder">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Arraste seu vídeo aqui ou clique para selecionar</p>
+                <span>Disponível após aprovação na etapa teórica</span>
+              </div>
+            </div>
+          </div>
+          <div class="av-card-footer">
+            <button class="btn btn-outline btn-lg" disabled id="btnEnviarVideo">
+              <i class="fas fa-lock"></i> Bloqueado — Conclua a Etapa Teórica
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- AVALIAÇÃO PROCESSO INFO -->
+      <div class="dash-card av-process-card mt-20">
+        <div class="av-process-header">
+          <i class="fas fa-info-circle"></i>
+          <h3>Como funciona o processo de avaliação</h3>
+        </div>
+        <div class="av-process-steps">
+          <div class="av-proc-step">
+            <div class="av-proc-num">1</div>
+            <div class="av-proc-text">
+              <h4>Conclua o curso</h4>
+              <p>Assista todas as aulas e revise os materiais de apoio disponibilizados.</p>
+            </div>
+          </div>
+          <div class="av-proc-arrow"><i class="fas fa-chevron-right"></i></div>
+          <div class="av-proc-step">
+            <div class="av-proc-num">2</div>
+            <div class="av-proc-text">
+              <h4>Prova teórica</h4>
+              <p>Responda 20 questões sobre o conteúdo do curso. Você precisa de 70% para passar.</p>
+            </div>
+          </div>
+          <div class="av-proc-arrow"><i class="fas fa-chevron-right"></i></div>
+          <div class="av-proc-step">
+            <div class="av-proc-num">3</div>
+            <div class="av-proc-text">
+              <h4>Envio do vídeo prático</h4>
+              <p>Grave e envie um vídeo demonstrando a execução de uma atividade do curso na prática.</p>
+            </div>
+          </div>
+          <div class="av-proc-arrow"><i class="fas fa-chevron-right"></i></div>
+          <div class="av-proc-step">
+            <div class="av-proc-num">4</div>
+            <div class="av-proc-text">
+              <h4>Análise e certificado</h4>
+              <p>Nossa equipe analisará o vídeo em até 5 dias úteis. Aprovado, você recebe o certificado!</p>
+            </div>
+          </div>
+        </div>
+        <div class="av-cert-note">
+          <i class="fas fa-award"></i>
+          <p>O certificado CivEnsina é reconhecido pelo mercado de trabalho por exigir comprovação prática, garantindo maior confiabilidade e valor profissional.</p>
+        </div>
+      </div>
     </section>
 
     <!-- CERTIFICATES -->
@@ -443,6 +596,67 @@
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
-<script src="js/dashboard.js"></script>
-</body>
+<!-- AVALIAÇÃO JS -->
+<script>
+function iniciarProvaTeorica() {
+  const toast = document.getElementById('toast');
+  toast.textContent = 'Prova teórica iniciada! Boa sorte!';
+  toast.className = 'toast show success';
+  setTimeout(() => toast.classList.remove('show'), 3500);
+
+  // Simular aprovação e desbloquear etapa prática
+  setTimeout(() => {
+    document.getElementById('avStep1').classList.add('done');
+    document.getElementById('avStep2').classList.remove('locked');
+    document.getElementById('avStep2').classList.add('active');
+    document.getElementById('avCardPratica').classList.remove('locked-card');
+    document.querySelector('#avCardPratica .av-status-badge').className = 'av-status-badge available';
+    document.querySelector('#avCardPratica .av-status-badge').innerHTML = '<i class="fas fa-circle"></i> Disponível';
+    document.getElementById('btnEnviarVideo').disabled = false;
+    document.getElementById('btnEnviarVideo').innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Enviar Vídeo Prático';
+    document.getElementById('avUploadArea').innerHTML = `
+      <label class="av-upload-active">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <p>Arraste seu vídeo aqui ou <span>clique para selecionar</span></p>
+        <small>MP4 ou MOV · Máximo 500 MB · 3 a 10 minutos</small>
+        <input type="file" accept="video/mp4,video/quicktime" style="display:none" onchange="videoSelecionado(this)"/>
+      </label>`;
+    const t2 = document.getElementById('toast');
+    t2.textContent = '✅ Parabéns! Você foi aprovado na etapa teórica! Agora envie o vídeo prático.';
+    t2.className = 'toast show success';
+    setTimeout(() => t2.classList.remove('show'), 4000);
+  }, 2000);
+}
+
+function videoSelecionado(input) {
+  if (!input.files.length) return;
+  const file = input.files[0];
+  const area = document.getElementById('avUploadArea');
+  area.innerHTML = `
+    <div class="av-upload-preview">
+      <i class="fas fa-file-video"></i>
+      <div>
+        <strong>${file.name}</strong>
+        <span>${(file.size / 1024 / 1024).toFixed(1)} MB</span>
+      </div>
+      <span class="av-upload-ok"><i class="fas fa-check-circle"></i> Pronto para envio</span>
+    </div>`;
+  document.getElementById('btnEnviarVideo').innerHTML = '<i class="fas fa-paper-plane"></i> Confirmar Envio do Vídeo';
+  document.getElementById('btnEnviarVideo').onclick = confirmarEnvioVideo;
+}
+
+function confirmarEnvioVideo() {
+  const toast = document.getElementById('toast');
+  toast.textContent = '📤 Vídeo enviado com sucesso! Nossa equipe analisará em até 5 dias úteis.';
+  toast.className = 'toast show success';
+  setTimeout(() => toast.classList.remove('show'), 4500);
+  document.getElementById('avStep2').classList.remove('active');
+  document.getElementById('avStep2').classList.add('done');
+  document.getElementById('avStep3').classList.remove('locked');
+  document.getElementById('avStep3').classList.add('active');
+  document.getElementById('btnEnviarVideo').disabled = true;
+  document.getElementById('btnEnviarVideo').innerHTML = '<i class="fas fa-check"></i> Vídeo Enviado — Aguardando Análise';
+}
+</script>
+
 </html>
