@@ -284,104 +284,104 @@
     </div>
   </div>
  
-  <!-- MINHAS ATIVIDADES -->
-  <div class="dash-card mt-20">
-    <div class="card-header-dash">
-      <h3><i class="fas fa-photo-video"></i> Minhas Atividades Enviadas</h3>
-      <span class="ativ-count-badge" id="atividadeCount">0 envios</span>
+    <!-- MINHAS ATIVIDADES -->
+    <div class="dash-card mt-20">
+      <div class="card-header-dash">
+        <h3><i class="fas fa-photo-video"></i> Minhas Atividades Enviadas</h3>
+        <span class="ativ-count-badge" id="atividadeCount">0 envios</span>
+      </div>
+      <div id="atividadeListContainer">
+        <div class="empty-state" id="atividadeEmpty">
+          <i class="fas fa-video"></i>
+          <p>Você ainda não enviou nenhuma atividade prática.</p>
+          <p style="font-size:0.85rem;color:var(--steel)">Grave um vídeo aplicando o que aprendeu e envie acima!</p>
+        </div>
+        <div class="atividade-grid" id="atividadeGrid" style="display:none"></div>
+      </div>
     </div>
-    <div id="atividadeListContainer">
-      <div class="empty-state" id="atividadeEmpty">
-        <i class="fas fa-video"></i>
-        <p>Você ainda não enviou nenhuma atividade prática.</p>
-        <p style="font-size:0.85rem;color:var(--steel)">Grave um vídeo aplicando o que aprendeu e envie acima!</p>
-      </div>
-      <div class="atividade-grid" id="atividadeGrid" style="display:none"></div>
-    </div>
-  </div>
-</section>
-    
-    <!-- PROFILE -->
-    <section class="dash-section" id="section-profile">
-      <div class="section-page-header">
-        <h2><i class="fas fa-user-cog"></i> Meu Perfil</h2>
-        <p>Gerencie suas informações pessoais e configurações de conta.</p>
-      </div>
-      <div class="profile-grid">
-        <div class="dash-card profile-card">
-          <div class="profile-avatar-large">
-            <div class="avatar-circle"><i class="fas fa-user"></i></div>
-            <button class="btn btn-outline btn-sm mt-10">Alterar foto</button>
+  </section>
+      
+      <!-- PROFILE -->
+      <section class="dash-section" id="section-profile">
+        <div class="section-page-header">
+          <h2><i class="fas fa-user-cog"></i> Meu Perfil</h2>
+          <p>Gerencie suas informações pessoais e configurações de conta.</p>
+        </div>
+        <div class="profile-grid">
+          <div class="dash-card profile-card">
+            <div class="profile-avatar-large">
+              <div class="avatar-circle"><i class="fas fa-user"></i></div>
+              <button class="btn btn-outline btn-sm mt-10">Alterar foto</button>
+            </div>
+            <div class="profile-status">
+              <span class="plan-badge free" id="profilePlanBadge"><i class="fas fa-user"></i> Plano Gratuito</span>
+              <p id="profileMemberSince">Membro desde: 2026</p>
+            </div>
           </div>
-          <div class="profile-status">
-            <span class="plan-badge free" id="profilePlanBadge"><i class="fas fa-user"></i> Plano Gratuito</span>
-            <p id="profileMemberSince">Membro desde: 2026</p>
+          <div class="dash-card profile-form-card">
+            <h3>Informações Pessoais</h3>
+            <form id="profileForm" onsubmit="saveProfile(event)">
+              <div class="form-group">
+                <label><i class="fas fa-user"></i> Nome Completo</label>
+                <input type="text" id="profName" placeholder="Seu nome completo"/>
+              </div>
+              <div class="form-group">
+                <label><i class="fas fa-envelope"></i> E-mail</label>
+                <input type="email" id="profEmail" placeholder="seu@email.com"/>
+              </div>
+              <div class="form-group">
+                <label><i class="fas fa-phone"></i> Telefone</label>
+                <input type="text" id="profPhone" placeholder="(11) 99999-0000"/>
+              </div>
+              <div class="form-group">
+                <label><i class="fas fa-briefcase"></i> Profissão</label>
+                <input type="text" id="profJob" placeholder="Ex: Engenheiro Civil"/>
+              </div>
+              <div class="form-group">
+                <label><i class="fas fa-map-marker-alt"></i> Cidade / Estado</label>
+                <input type="text" id="profCity" placeholder="Ex: São Paulo, SP"/>
+              </div>
+              <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Salvar Alterações</button>
+            </form>
           </div>
-        </div>
-        <div class="dash-card profile-form-card">
-          <h3>Informações Pessoais</h3>
-          <form id="profileForm" onsubmit="saveProfile(event)">
-            <div class="form-group">
-              <label><i class="fas fa-user"></i> Nome Completo</label>
-              <input type="text" id="profName" placeholder="Seu nome completo"/>
-            </div>
-            <div class="form-group">
-              <label><i class="fas fa-envelope"></i> E-mail</label>
-              <input type="email" id="profEmail" placeholder="seu@email.com"/>
-            </div>
-            <div class="form-group">
-              <label><i class="fas fa-phone"></i> Telefone</label>
-              <input type="text" id="profPhone" placeholder="(11) 99999-0000"/>
-            </div>
-            <div class="form-group">
-              <label><i class="fas fa-briefcase"></i> Profissão</label>
-              <input type="text" id="profJob" placeholder="Ex: Engenheiro Civil"/>
-            </div>
-            <div class="form-group">
-              <label><i class="fas fa-map-marker-alt"></i> Cidade / Estado</label>
-              <input type="text" id="profCity" placeholder="Ex: São Paulo, SP"/>
-            </div>
-            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Salvar Alterações</button>
-          </form>
-        </div>
-        <div class="dash-card">
-          <h3>Alterar Senha</h3>
-          <form id="passForm" onsubmit="changePassword(event)">
-            <div class="form-group">
-              <label><i class="fas fa-lock"></i> Senha Atual</label>
-              <div class="input-password">
-                <input type="password" id="curPass" placeholder="Senha atual"/>
-                <button type="button" class="toggle-pass" onclick="togglePassword('curPass')"><i class="fas fa-eye"></i></button>
+          <div class="dash-card">
+            <h3>Alterar Senha</h3>
+            <form id="passForm" onsubmit="changePassword(event)">
+              <div class="form-group">
+                <label><i class="fas fa-lock"></i> Senha Atual</label>
+                <div class="input-password">
+                  <input type="password" id="curPass" placeholder="Senha atual"/>
+                  <button type="button" class="toggle-pass" onclick="togglePassword('curPass')"><i class="fas fa-eye"></i></button>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label><i class="fas fa-lock"></i> Nova Senha</label>
-              <div class="input-password">
-                <input type="password" id="newPass" placeholder="Nova senha"/>
-                <button type="button" class="toggle-pass" onclick="togglePassword('newPass')"><i class="fas fa-eye"></i></button>
+              <div class="form-group">
+                <label><i class="fas fa-lock"></i> Nova Senha</label>
+                <div class="input-password">
+                  <input type="password" id="newPass" placeholder="Nova senha"/>
+                  <button type="button" class="toggle-pass" onclick="togglePassword('newPass')"><i class="fas fa-eye"></i></button>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label><i class="fas fa-lock"></i> Confirmar Nova Senha</label>
-              <div class="input-password">
-                <input type="password" id="confPass" placeholder="Confirme a nova senha"/>
-                <button type="button" class="toggle-pass" onclick="togglePassword('confPass')"><i class="fas fa-eye"></i></button>
+              <div class="form-group">
+                <label><i class="fas fa-lock"></i> Confirmar Nova Senha</label>
+                <div class="input-password">
+                  <input type="password" id="confPass" placeholder="Confirme a nova senha"/>
+                  <button type="button" class="toggle-pass" onclick="togglePassword('confPass')"><i class="fas fa-eye"></i></button>
+                </div>
               </div>
-            </div>
-            <button type="submit" class="btn btn-outline"><i class="fas fa-key"></i> Alterar Senha</button>
-          </form>
-        </div>
-        <div class="dash-card">
-          <h3><i class="fas fa-history"></i> Histórico de Cursos</h3>
-          <div id="historyContainer">
-            <div class="empty-state">
-              <i class="fas fa-book"></i>
-              <p>Nenhum histórico ainda.</p>
+              <button type="submit" class="btn btn-outline"><i class="fas fa-key"></i> Alterar Senha</button>
+            </form>
+          </div>
+          <div class="dash-card">
+            <h3><i class="fas fa-history"></i> Histórico de Cursos</h3>
+            <div id="historyContainer">
+              <div class="empty-state">
+                <i class="fas fa-book"></i>
+                <p>Nenhum histórico ainda.</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
     <!-- SUBSCRIPTION -->
     <section class="dash-section" id="section-subscription">
